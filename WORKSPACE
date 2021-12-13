@@ -13,10 +13,15 @@ workspace(name = "tf_serving")
 # 3. Request the new archive to be mirrored on mirror.bazel.build for more
 #    reliable downloads.
 load("//tensorflow_serving:repo.bzl", "tensorflow_http_archive")
-tensorflow_http_archive(
+
+# tensorflow_http_archive(
+#     name = "org_tensorflow",
+#     sha256 = "add5982a3ce3b9964b7122dd0d28927b6a9d9abd8f95a89eda18ca76648a0ae8",
+#     git_commit = "c2363d6d025981c661f8cbecf4c73ca7fbf38caf",
+# )
+local_repository(
     name = "org_tensorflow",
-    sha256 = "add5982a3ce3b9964b7122dd0d28927b6a9d9abd8f95a89eda18ca76648a0ae8",
-    git_commit = "c2363d6d025981c661f8cbecf4c73ca7fbf38caf",
+    path = "/home/yitao/Documents/software/tf-2.6/tensorflow",
 )
 
 # Import all of TensorFlow Serving's external dependencies.

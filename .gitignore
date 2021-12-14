@@ -13,3 +13,4 @@ node_modules
 /util/python/python_include
 /util/python/python_lib
 third_party/yitao_extra/*
+**/*.pyc

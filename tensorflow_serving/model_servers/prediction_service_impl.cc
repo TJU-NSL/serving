@@ -53,6 +53,9 @@ thread::ThreadPoolOptions GetThreadPoolOptions(
                                               const PredictRequest *request,
                                               PredictResponse *response) {
   const uint64 start = Env::Default()->NowMicros();
+
+  LOG(INFO) << "[Yitao] Predict() is called for model " << request->model_spec().name() << "!";
+
   tensorflow::RunOptions run_options = tensorflow::RunOptions();
   if (enforce_session_run_timeout_) {
     run_options.set_timeout_in_ms(
@@ -71,6 +74,8 @@ thread::ThreadPoolOptions GetThreadPoolOptions(
     VLOG(1) << "Predict failed: " << status.error_message();
   }
   RecordModelRequestCount(request->model_spec().name(), tf_status);
+
+  LOG(INFO) << "[Yitao] Predict() has finished for model " << request->model_spec().name() << "!";
 
   return status;
 }
